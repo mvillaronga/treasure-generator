@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/static/css/main.073c9b0a.css",
-    "main.js": "/static/js/main.c63ebfbe.js",
-    "static/js/787.ecf6302e.chunk.js": "/static/js/787.ecf6302e.chunk.js",
-    "index.html": "/index.html",
-    "main.073c9b0a.css.map": "/static/css/main.073c9b0a.css.map",
-    "main.c63ebfbe.js.map": "/static/js/main.c63ebfbe.js.map",
-    "787.ecf6302e.chunk.js.map": "/static/js/787.ecf6302e.chunk.js.map"
+    "main.css": "/treasure-generator/static/css/main.073c9b0a.css",
+    "main.js": "/treasure-generator/static/js/main.6c076782.js",
+    "static/js/787.ecf6302e.chunk.js": "/treasure-generator/static/js/787.ecf6302e.chunk.js",
+    "index.html": "/treasure-generator/index.html",
+    "main.073c9b0a.css.map": "/treasure-generator/static/css/main.073c9b0a.css.map",
+    "main.6c076782.js.map": "/treasure-generator/static/js/main.6c076782.js.map",
+    "787.ecf6302e.chunk.js.map": "/treasure-generator/static/js/787.ecf6302e.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.073c9b0a.css",
-    "static/js/main.c63ebfbe.js"
+    "static/js/main.6c076782.js"
   ]
 }
