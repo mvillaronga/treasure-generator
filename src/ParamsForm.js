@@ -24,12 +24,15 @@ class ParamsForm extends React.Component {
     const target = event.target;
     const name = target.name;
     const value =  target.value;
-
+    
+    console.log(value)
     if (target.name === 'tier') {
-      this.dice_select = this.setDice(tiers[target.value].dice)
-      this.setState({
-        'dice': 1    });
-      }
+      var dice = 1
+      if (value > 0)
+        dice = tiers[value].dice
+      this.dice_select = this.setDice(dice)
+      this.setState({'dice': 1});
+    }
 
     this.setState({
       [name]: value    });
@@ -37,8 +40,9 @@ class ParamsForm extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    console.log("this.handleSubmit")
-    this.props.onParamsChanged(this.state.tier, this.state.distribution, this.state.dice)
+    
+    if (this.state.tier > 0 && this.state.distribution > 0)
+      this.props.onParamsChanged(this.state.tier, this.state.distribution, this.state.dice)
   }
 
   render() {
@@ -66,9 +70,7 @@ class ParamsForm extends React.Component {
           {distribution.map((item, idx) => <option value={idx} key={idx}>{item.name}</option>)}
         </select>
       </label>
-      {
-              console.log(this.state.tier)
-          }
+
       <label>
         Coin Dice:
         <select 
