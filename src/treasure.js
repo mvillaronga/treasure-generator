@@ -30,13 +30,12 @@ export var distribution = [
   {name:"No Art",           types:['TG','TG','TG','GEM','GEM','GEM']}
 ]
 
-export function rollTreasure(tier, coinsDice, objectDice, distribution) {
+export function rollTreasure(tier, coinsDice, objectDice, dist) {
   var treasure = {}
 
   treasure.coins = rollSum(coinsDice) * tier.coin
-
-  var numItems = rollSum(objectDice);
-
+  treasure.items = Array(rollSum(objectDice)).fill().map( () => makeItem(tier, dist))
+  
   return treasure
 }
 
@@ -67,7 +66,7 @@ export function makeItem(tier, dist) {
 
 function rollSum(numDice) {
   var sum = 0
-  for (var idx = numDice; numDice > 0; idx-- )
+  for (var idx = numDice; idx > 0; idx-- )
     sum += rollD6()
 
   return sum
