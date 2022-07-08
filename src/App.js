@@ -1,9 +1,8 @@
 import logo from './logo.svg';
 import './App.css';
-import {rollTreasure, makeItem, tiers, distribution} from './treasure.js'
+import {rollTreasure, tiers, distribution} from './treasure.js'
 
 function App() {
-  var item = makeItem(tiers[1], distribution[1])
   var treasure = rollTreasure(tiers[2], 1, 2, distribution[1]) 
 
   const items = treasure.items.map((item) => 
