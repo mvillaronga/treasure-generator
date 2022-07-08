@@ -11,12 +11,13 @@ class ParamsForm extends React.Component {
     }
     
     this.handleInputChange = this.handleInputChange.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
 
     this.tier_select = tiers.map((item, idx) => 
-      <option value={idx}>{item.title} ({item.start} - {item.end})</option>
+      <option value={idx} key={idx}>{item.title} ({item.start} - {item.end})</option>
     )
     this.dist_select = distribution.map((item, idx) => 
-      <option value={idx}>{item.name}</option>
+      <option value={idx} key={idx}>{item.name}</option>
     )
   }
 
@@ -28,9 +29,15 @@ class ParamsForm extends React.Component {
       [name]: value    });
   }
 
+  handleSubmit(event) {
+    event.preventDefault();
+    console.log("this.handleSubmit")
+    this.props.onParamsChanged(this.state.tier, this.state.distribution)
+  }
+
   render() {
     return (
-    <form>
+    <form onSubmit={this.handleSubmit}>
       <label>
         Tiers:  
         <select 

@@ -1,26 +1,38 @@
 import React from 'react'
 import ParamsForm from './ParamsForm.js'
-import {rollTreasure, tiers, distribution} from './treasure.js'
+import { rollTreasure, tiers, distribution } from './treasure.js';
 
 class GeneratorController extends React.Component {
   constructor(props) {
     super(props);
 
-    this.treasure = rollTreasure(tiers[2], 1, 2, distribution[1]) 
-    this.items = this.treasure.items.map((item) => 
-      <li>1 [{item.quality} {item.rarity} {item.type}] ({item.value} GP)</li>)
-  
+    this.default_treasure = {coins: 0, items: []}
+
+    this.state = {
+      treasure: this.default_treasure
+    }
+
+    this.handleParamsChanged = this.handleParamsChanged.bind(this)
   }
+
+  handleParamsChanged = (tier, dist) => {
+    var t = rollTreasure(tiers[tier], 1, 2, distribution[dist])
+    this.setState({treasure:t})
+  }
+  
 
   render() {
     return (
       <header className="App-header">
 
-        <ParamsForm />
+        <ParamsForm onParamsChanged={this.handleParamsChanged}/>
 
         <h1>Items</h1>
-        <div>Coins {this.treasure.coins} GP</div>
-        <ul>{this.items}</ul>
+        <div>Coins {this.state.treasure.coins} GP</div>
+        <ul>{
+          this.state.treasure.items.map((item, idx) => 
+            <li key={idx}>1 [{item.quality} {item.rarity} {item.type}] ({item.value} GP)</li>) }
+        </ul>
       </header>
     )
   }

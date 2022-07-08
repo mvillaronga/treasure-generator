@@ -31,11 +31,12 @@ export var distribution = [
 ]
 
 export function rollTreasure(tier, coinsDice, objectDice, dist) {
+  console.log('roll treasure')
   var treasure = {}
 
   treasure.coins = rollSum(coinsDice) * tier.coin
   treasure.items = Array(rollSum(objectDice)).fill().map( () => makeItem(tier, dist))
-  
+
   return treasure
 }
 
