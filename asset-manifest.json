@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/treasure-generator/static/css/main.073c9b0a.css",
+    "main.js": "/treasure-generator/static/js/main.6c076782.js",
+    "static/js/787.ecf6302e.chunk.js": "/treasure-generator/static/js/787.ecf6302e.chunk.js",
+    "index.html": "/treasure-generator/index.html",
+    "main.073c9b0a.css.map": "/treasure-generator/static/css/main.073c9b0a.css.map",
+    "main.6c076782.js.map": "/treasure-generator/static/js/main.6c076782.js.map",
+    "787.ecf6302e.chunk.js.map": "/treasure-generator/static/js/787.ecf6302e.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.073c9b0a.css",
+    "static/js/main.6c076782.js"
+  ]
+}
