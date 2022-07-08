@@ -7,24 +7,30 @@ class ParamsForm extends React.Component {
     this.state = {
       tier: -1,
       distribution: -1,
-      dice: 0
+      dice: 1
     }
     
     this.handleInputChange = this.handleInputChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
 
-    this.tier_select = tiers.map((item, idx) => 
-      <option value={idx} key={idx}>{item.title} ({item.start} - {item.end})</option>
-    )
-    this.dist_select = distribution.map((item, idx) => 
-      <option value={idx} key={idx}>{item.name}</option>
-    )
+    this.dice_select = this.setDice(1)
+  }
+
+  setDice(cnt) {
+    return [...Array(cnt)].map((item, idx) => <option value={idx + 1} key={idx + 1 }>{idx + 1}</option>)
   }
 
   handleInputChange(event) {
     const target = event.target;
-    const value = target.type === 'checkbox' ? target.checked : target.value;
     const name = target.name;
+    const value =  target.value;
+
+    if (target.name === 'tier') {
+      this.dice_select = this.setDice(tiers[target.value].dice)
+      this.setState({
+        'dice': 1    });
+      }
+
     this.setState({
       [name]: value    });
   }
@@ -32,7 +38,7 @@ class ParamsForm extends React.Component {
   handleSubmit(event) {
     event.preventDefault();
     console.log("this.handleSubmit")
-    this.props.onParamsChanged(this.state.tier, this.state.distribution)
+    this.props.onParamsChanged(this.state.tier, this.state.distribution, this.state.dice)
   }
 
   render() {
@@ -46,7 +52,7 @@ class ParamsForm extends React.Component {
           onChange={this.handleInputChange}>
 
         <option value="-1"></option>
-          {this.tier_select}
+          {tiers.map((item, idx) => <option value={idx} key={idx}>{item.title} ({item.start} - {item.end})</option>)}
         </select>
       </label>
 
@@ -57,9 +63,25 @@ class ParamsForm extends React.Component {
           name="distribution"
           onChange={this.handleInputChange}>
           <option value="-1"></option>
-          {this.dist_select}
+          {distribution.map((item, idx) => <option value={idx} key={idx}>{item.name}</option>)}
         </select>
       </label>
+      {
+              console.log(this.state.tier)
+          }
+      <label>
+        Coin Dice:
+        <select 
+          value={this.state.dice} 
+          name="dice"
+          onChange={this.handleInputChange}>
+          { 
+            // no idea why I can't access state and render the array here
+            this.dice_select
+          }
+        </select>
+      </label>
+
 
       <input type="submit" value="generate" />
     </form>

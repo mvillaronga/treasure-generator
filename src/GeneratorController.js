@@ -15,8 +15,8 @@ class GeneratorController extends React.Component {
     this.handleParamsChanged = this.handleParamsChanged.bind(this)
   }
 
-  handleParamsChanged = (tier, dist) => {
-    var t = rollTreasure(tiers[tier], 1, 2, distribution[dist])
+  handleParamsChanged = (tier, dist, dice) => {
+    var t = rollTreasure(tiers[tier], dice, distribution[dist])
     this.setState({treasure:t})
   }
   
